@@ -17,27 +17,27 @@ var OAHENV_PROVISION = "provision";
 var OAHENV_RELOAD = "reload";
 
 $( document ).ready( function() {
-  oahenvProcessing("Reading configurations ...")
+  oahEnvProcessing("Reading configurations ...");
   checkPrerequisites() ;
-  detectOAHEnv());
+  detectOAHEnv();
 });
 
 // ------ Event Hookups ------ //
 
 $("#menu_oahenv_dashboard").click(function() {
-  oahenvBuildDashboard();
+  oahEnvBuildDashboard();
 });
 
 $("#menu_oahenv_sites").click(function() {
-  oahenvBuildSitesList();
+  oahEnvBuildSettings();
 });
 
 $("#menu_oahenv_tools").click(function() {
-  oahenvBuildTools();
+  oahEnvBuildTools();
 });
 
 $("#menu_oahenv_settings").click(function() {
-  oahenvBuildSettings();
+  oahEnvBuildSettings();
 });
 
 $("#provisionLink").click(function() {
@@ -304,7 +304,7 @@ function setVagrantDetails(details) {
 
 function runOAHEnvLuncher() {
   updateEnvStatus();
-  oahenvBuildDashboard();
+  oahEnvBuildDashboard();
 }
 
 
@@ -438,14 +438,14 @@ function oahenvHidePanels() {
 }
 
 
-function oahenvBuildDashboard() {
+function oahEnvBuildDashboard() {
   oahenvHidePanels();
   $("#menu_oahenv_dashboard").addClass("active");
   $("#panel_oahenv_dashboard").fadeIn();
 }
 
 
-function oahenvBuildSitesList() {
+function oahEnvBuildSettings() {
   oahenvHidePanels();
   $('#oahenvSites').html("");
 
@@ -472,7 +472,7 @@ function oahenvBuildSitesList() {
 }
 
 
-function oahenvBuildTools() {
+function oahEnvBuildTools() {
   oahenvHidePanels();
   $("#menu_oahenv_tools").addClass("active");
   $("#panel_oahenv_tools").fadeIn();
@@ -617,7 +617,7 @@ function createNewSite(name, gitUrl, composer, webroot) {
 
   saveConfigFile();
 
-  oahenvBuildSitesList();
+  oahEnvBuildSettings();
 }
 
 function createSiteGit(dir, projectGitUrl, composer){
@@ -732,13 +732,13 @@ function deleteSite(projectName, deleteSettings) {
   }
 
   saveConfigFile();
-  oahenvBuildSitesList();
+  oahEnvBuildSettings();
 }
 
 
 
 
-function oahenvBuildSettings() {
+function oahEnvBuildSettings() {
   oahenvHidePanels();
 
   // IP address
@@ -838,5 +838,5 @@ function oahEnvResetSettings() {
   oahenv_config = yaml.load(config_file);
   saveConfigFile();
 
-  oahenvBuildSettings();
+  oahEnvBuildSettings();
 }
